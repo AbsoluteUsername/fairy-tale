@@ -188,3 +188,92 @@ Job manifests can reference cached assets by SHA256:
   }
 }
 ```
+
+## Speakers registry & name map
+
+Manage speaker definitions and name-to-speaker mappings for voice synthesis.
+
+### Usage
+
+**Initialize speakers registries:**
+```bash
+python -m tools.speakers init --out dist/assets
+```
+
+**Add or update speakers:**
+```bash
+python -m tools.speakers add --id "lina" --display "Ліна" --voice "voice_child_female" --out dist/assets
+python -m tools.speakers add --id "grandpa" --display "Дідусь" --voice "voice_elder_male" --lang uk --pitch -2 --rate 0.9 --style warm --out dist/assets
+```
+
+**Update speaker's voice:**
+```bash
+python -m tools.speakers link-voice --id "lina" --voice "voice_child_updated" --out dist/assets
+```
+
+**Analyze story for missing speakers:**
+```bash
+python -m tools.speakers suggest-missing --in dist/jobs/2025-01-13T15-30-45Z__beautiful-story/normalized/story.normalized.json --out dist/assets
+# Missing speaker IDs (add to speakers registry):
+# chmelyk
+# lina
+# 
+# Missing name mappings (add patterns):
+# Ліна
+# Чмелик
+```
+
+**Add name mapping patterns:**
+```bash
+python -m tools.speakers add-map-pattern --pattern "Ліна" --speaker "lina" --out dist/assets
+python -m tools.speakers add-map-pattern --pattern "Чмелик" --speaker "chmelyk" --out dist/assets
+```
+
+### Registry Structure
+
+**speakers.json** - Speaker definitions with voice parameters:
+```json
+{
+  "version": 1,
+  "updated_at": "2025-01-13T15:30:45Z",
+  "items": {
+    "narrator": {
+      "display_name": "Оповідач",
+      "default_voice": "voice_narrator",
+      "lang": "uk",
+      "pitch": 0,
+      "rate": 1.0,
+      "style": "calm"
+    },
+    "lina": {
+      "display_name": "Ліна",
+      "default_voice": "voice_child_female",
+      "lang": "uk",
+      "pitch": 2,
+      "rate": 1.1,
+      "style": "playful"
+    }
+  }
+}
+```
+
+**speaker_name_map.json** - Patterns for mapping story names to speaker IDs:
+```json
+{
+  "version": 1,
+  "updated_at": "2025-01-13T15:30:45Z",
+  "patterns": [
+    { "pattern": "Ліна", "speaker": "lina" },
+    { "pattern": "дідус[ьь]", "speaker": "grandpa" }
+  ],
+  "fallback": "narrator"
+}
+```
+
+### Name Detection
+
+The `suggest-missing` command scans story dialogue and text for:
+- **Speaker IDs**: From `dialogue[].speaker` fields  
+- **Character names**: Using Ukrainian speech verb patterns (сказав/сказала, каже, мовив/мовила, etc.)
+
+Reports names not covered by existing patterns or speaker IDs for easy copy-paste into registries.
