@@ -277,3 +277,69 @@ The `suggest-missing` command scans story dialogue and text for:
 - **Character names**: Using Ukrainian speech verb patterns (сказав/сказала, каже, мовив/мовила, etc.)
 
 Reports names not covered by existing patterns or speaker IDs for easy copy-paste into registries.
+
+## TTS lines
+
+Generate text-to-speech lines from story JSON with speaker canonicalization and quote extraction.
+
+### Usage
+
+**Generate TTS lines:**
+```bash
+python -m tools.tts --input dist/jobs/2025-01-13T15-30-45Z__beautiful-story/normalized/story.normalized.json --output dist/jobs/.../tts/tts_lines.json --assets dist/assets
+```
+
+**With speaker enforcement:**
+```bash
+python -m tools.tts --input story.json --output tts_lines.json --assets dist/assets --enforce-known
+# Exits 1 if any speakers cannot be resolved to registered IDs
+```
+
+### Speaker Canonicalization
+
+The TTS generator uses speaker registries to canonicalize speaker names:
+
+1. **Direct speaker IDs**: If `dialogue[].speaker` matches a key in `speakers.json.items` → use as-is
+2. **Pattern matching**: Try `speaker_name_map.json.patterns` (regex, first match wins)  
+3. **Fallback**: Use `speaker_name_map.json.fallback` (default: "narrator")
+
+### Quote Extraction
+
+Automatically detects embedded quotes in dialogue text using Ukrainian speech verbs:
+
+**Input dialogue:**
+```json
+{
+  "speaker": "grandpa",
+  "text": "Через кілька днів кущик розцвів, і Ліна сказала: \"Ого!\""
+}
+```
+
+**Generated TTS lines:**
+```json
+[
+  {
+    "id": "SC03_001",
+    "text": "Через кілька днів кущик розцвів, і",
+    "speaker": "grandpa"
+  },
+  {
+    "id": "SC03_002", 
+    "text": "Ого!",
+    "speaker": "lina"
+  }
+]
+```
+
+### Speaker Resolution Examples
+
+With mapping pattern `"Ліна" → "lina"`:
+- Quote "Ліна сказала: 'Привіт'" → speaker: `"lina"`
+- Unknown name without `--enforce-known` → speaker: `"narrator"` + warning
+- Unknown name with `--enforce-known` → exit 1 with error list
+
+### Options
+
+- `--max-chars 220`: Maximum characters per TTS line (default: 220)
+- `--enforce-known`: Exit with error if unresolved speakers found
+- `--assets`: Path to assets directory containing speaker registries
