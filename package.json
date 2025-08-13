@@ -1,0 +1,13 @@
+{
+  "name": "petrovich",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "validate": "echo 'TODO: Add validation script'"
+  },
+  "packageManager": "pnpm@8.0.0",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
