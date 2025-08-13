@@ -1,0 +1,8 @@
+Job ID: cde87c8e
+Status: success
+Input: tests/golden/timeline.json
+Schema: timeline
+Mode: strict
+Duration: 0.007s
+
+No errors found.

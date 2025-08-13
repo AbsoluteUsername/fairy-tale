@@ -23,7 +23,6 @@ pids/
 coverage/
 
 # Build outputs
-dist/
 build/
 .next/
 .nuxt/

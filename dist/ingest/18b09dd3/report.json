@@ -1,0 +1,13 @@
+{
+  "job_id": "18b09dd3",
+  "status": "success",
+  "input": "tests/story_min.json",
+  "schema": "story",
+  "mode": "strict",
+  "errors": [],
+  "timing": {
+    "start_time": 1755097187.9477487,
+    "end_time": 1755097187.955226,
+    "duration_sec": 0.007
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "job_id": "cde87c8e",
+  "status": "success",
+  "input": "tests/golden/timeline.json",
+  "schema": "timeline",
+  "mode": "strict",
+  "errors": [],
+  "timing": {
+    "start_time": 1755097191.6972437,
+    "end_time": 1755097191.7044816,
+    "duration_sec": 0.007
+  }
+}

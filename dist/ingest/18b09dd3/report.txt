@@ -1,0 +1,8 @@
+Job ID: 18b09dd3
+Status: success
+Input: tests/story_min.json
+Schema: story
+Mode: strict
+Duration: 0.007s
+
+No errors found.
