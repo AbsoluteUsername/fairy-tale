@@ -1,0 +1,8 @@
+Job ID: 2025-08-13T15-23-10Z__beautiful-story
+Status: draft
+Input: tests/story_min.json
+Schema: story
+Mode: lenient
+Duration: 0.009s
+
+No errors found.

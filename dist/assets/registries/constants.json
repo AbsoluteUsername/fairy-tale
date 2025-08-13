@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "updated_at": "2025-08-13T15:54:18.522515Z",
+  "items": {
+    "ec7f36c39346e0fccb66c2872e839351155cd95cbd6548f561a0f6cf14fbc586": {
+      "path": "constants/sha256_ec7f36c39346.json",
+      "sha256": "ec7f36c39346e0fccb66c2872e839351155cd95cbd6548f561a0f6cf14fbc586",
+      "meta": {
+        "name": "palette.json"
+      }
+    },
+    "81f0c3c574b2699c0fd4e761996367d92a9ea6caef72105e8691a15507856017": {
+      "path": "constants/sha256_81f0c3c574b2.json",
+      "sha256": "81f0c3c574b2699c0fd4e761996367d92a9ea6caef72105e8691a15507856017",
+      "meta": {
+        "name": "test_config.json"
+      }
+    }
+  }
+}

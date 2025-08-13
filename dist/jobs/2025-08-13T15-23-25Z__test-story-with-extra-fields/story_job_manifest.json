@@ -1,0 +1,18 @@
+{
+  "job_id": "2025-08-13T15-23-25Z__test-story-with-extra-fields",
+  "created_at": "2025-08-13T15:23:25.686739+00:00",
+  "title": "Test Story with Extra Fields",
+  "slug": "test-story-with-extra-fields",
+  "paths": {
+    "source_story": "source/story.raw.json",
+    "story": "normalized/story.normalized.json",
+    "tts_lines": "tts/tts_lines.json",
+    "audio_manifest": "tts/audio/audio_manifest.json",
+    "storyboard": "visual/storyboard.json",
+    "asset_manifest": "visual/asset_manifest.json",
+    "timeline": "timeline/timeline.json",
+    "ffmpeg_script": "timeline/ffmpeg_script.txt",
+    "video": "video/final.mp4"
+  },
+  "status": "failed"
+}

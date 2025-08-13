@@ -1,0 +1,29 @@
+{
+  "title": "Test Story with Extra Fields",
+  "language": "en",
+  "age_range": "5-10",
+  "moral": "Test moral",
+  "duration_goal_sec": 60,
+  "scenes": [
+    {
+      "id": "SC01",
+      "summary": "Test scene",
+      "dialogue": [
+        {
+          "speaker": "narrator",
+          "text": "Test dialogue."
+        }
+      ],
+      "_extra": {
+        "extra_scene_data": "this should also go to _extra"
+      }
+    }
+  ],
+  "_extra": {
+    "unknown_field": "this should go to _extra",
+    "custom_metadata": {
+      "author": "Test Author",
+      "version": "1.0"
+    }
+  }
+}

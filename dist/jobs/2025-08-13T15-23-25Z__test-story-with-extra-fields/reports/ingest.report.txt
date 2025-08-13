@@ -1,0 +1,9 @@
+Job ID: 2025-08-13T15-23-25Z__test-story-with-extra-fields
+Status: failed
+Input: test_story_extra.json
+Schema: story
+Mode: lenient
+Duration: 0.01s
+
+Errors (1):
+  /: Additional properties are not allowed ('custom_metadata', 'unknown_field' were unexpected)
