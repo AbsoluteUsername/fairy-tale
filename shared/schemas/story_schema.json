@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Story Schema",
+  "type": "object",
+  "required": ["title", "language", "age_range", "moral", "duration_goal_sec", "scenes"],
+  "properties": {
+    "title": {"type": "string"},
+    "language": {"type": "string"},
+    "age_range": {"type": "string"},
+    "moral": {"type": "string"},
+    "duration_goal_sec": {"type": "number"},
+    "scenes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "summary", "dialogue"],
+        "properties": {
+          "id": {"type": "string"},
+          "summary": {"type": "string"},
+          "dialogue": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["speaker", "text"],
+              "properties": {
+                "speaker": {"type": "string"},
+                "text": {"type": "string"}
+              }
+            }
+          },
+          "characters": {
+            "type": "array",
+            "items": {"type": "string"},
+            "default": []
+          },
+          "visual_notes": {"type": "string", "default": ""},
+          "beats": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["t_rel", "event"],
+              "properties": {
+                "t_rel": {"type": "number"},
+                "event": {"type": "string"},
+                "emphasis": {"type": "string"}
+              }
+            },
+            "default": []
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

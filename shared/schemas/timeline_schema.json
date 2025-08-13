@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Timeline Schema",
+  "type": "object",
+  "required": ["fps", "res", "tracks"],
+  "properties": {
+    "fps": {"type": "number"},
+    "res": {"type": "string"},
+    "tracks": {
+      "type": "object",
+      "required": ["V", "A"],
+      "properties": {
+        "V": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "A": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      },
+      "additionalProperties": false
+    },
+    "captions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["t_start", "t_end", "text"],
+        "properties": {
+          "t_start": {"type": "number"},
+          "t_end": {"type": "number"},
+          "text": {"type": "string"}
+        },
+        "additionalProperties": false
+      },
+      "default": []
+    }
+  },
+  "additionalProperties": false
+}

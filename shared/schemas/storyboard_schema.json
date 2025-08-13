@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Storyboard Schema",
+  "type": "object",
+  "required": ["fps", "shots"],
+  "properties": {
+    "fps": {"type": "number"},
+    "shots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "start", "dur"],
+        "properties": {
+          "id": {"type": "string"},
+          "start": {"type": "number"},
+          "dur": {"type": "number"},
+          "camera": {"type": "string"},
+          "characters": {
+            "type": "array",
+            "items": {"type": "string"},
+            "default": []
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["t", "type"],
+              "properties": {
+                "t": {"type": "number"},
+                "type": {"type": "string"},
+                "who": {"type": "string"}
+              },
+              "additionalProperties": false
+            },
+            "default": []
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
